@@ -94,10 +94,3 @@ if uploaded_file:
                 unsafe_allow_html=True
             )
 
-# ----------------- DISCLAIMER -----------------
-st.markdown("""
-<div class="warning-box">
-⚠️ This system is for decision-support only and should not replace medical diagnosis.<br>
-Please upload thyroid ultrasound images only.
-</div>
-""", unsafe_allow_html=True)
