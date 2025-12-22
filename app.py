@@ -10,70 +10,70 @@ st.set_page_config(
 )
 
 # ---------------- THEME TOGGLE ----------------
-dark_mode = st.toggle("🌗 Dark Mode", value=False)
-
+dark_mode = st.toggle("🌙 Dark Mode")
 # ---------------- STYLES ----------------
 if dark_mode:
-    bg = "#0f172a"
-    card = "#020617"
-    text = "#e5e7eb"
-    subtitle = "#94a3b8"
+    st.markdown("""
+    <style>
+    .title { color: #e5e7eb; }
+    .subtitle { color: #cbd5f5; }
+    .card {
+        background-color: #111827;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.6);
+    }
+    .normal {
+        background-color: #22c55e;
+        color: black;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .abnormal {
+        background-color: #ef4444;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 else:
-    bg = "#f8fafc"
-    card = "#ffffff"
-    text = "#1e3a8a"
-    subtitle = "#475569"
-
-st.markdown(f"""
-<style>
-.main {{
-    background-color: {bg};
-}}
-.center {{
-    text-align: center;
-}}
-.title {{
-    font-size: 42px;
-    font-weight: 700;
-    color: {text};
-}}
-.subtitle {{
-    font-size: 18px;
-    color: {subtitle};
-    margin-bottom: 30px;
-}}
-.card {{
-    background-color: {card};
-    padding: 25px;
-    border-radius: 15px;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
-}}
-.normal {{
-    background-color: #16a34a;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-}}
-.abnormal {{
-    background-color: #dc2626;
-    color: white;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 20px;
-    font-weight: 600;
-    text-align: center;
-}}
-.footer {{
-    margin-top: 40px;
-    font-size: 14px;
-    color: {subtitle};
-    text-align: center;
-}}
-</style>
-""", unsafe_allow_html=True)
+    st.markdown("""
+    <style>
+    .title { color: #1e3a8a; }
+    .subtitle { color: #475569; }
+    .card {
+        background-color: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
+    }
+    .normal {
+        background-color: #dcfce7;
+        color: #166534;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+    .abnormal {
+        background-color: #fee2e2;
+        color: #991b1b;
+        padding: 15px;
+        border-radius: 10px;
+        font-size: 20px;
+        font-weight: 600;
+        text-align: center;
+    }
+    </style>
+    """, unsafe_allow_html=True)
 
 # ---------------- LOGO ----------------
 st.markdown("<div class='center'>", unsafe_allow_html=True)
