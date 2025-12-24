@@ -38,6 +38,7 @@ st.markdown("""
     border-radius: 15px;
     padding: 30px;
     box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
+    margin-top: 20px;
 }
 
 .normal {
@@ -90,15 +91,16 @@ def load_model():
 
 model = load_model()
 
-# ---------------- CARD UI ----------------
-st.markdown("<div class='card'>", unsafe_allow_html=True)
-
+# ---------------- FILE UPLOAD ----------------
 uploaded_file = st.file_uploader(
     "Upload Ultrasound Image only",
     type=["jpg", "jpeg", "png"]
 )
 
+# ---------------- SHOW CARD ONLY AFTER UPLOAD ----------------
 if uploaded_file:
+    st.markdown("<div class='card'>", unsafe_allow_html=True)
+
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Ultrasound Image", use_container_width=True)
 
@@ -121,7 +123,7 @@ if uploaded_file:
                 unsafe_allow_html=True
             )
 
-st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # ---------------- FOOTER ----------------
 st.markdown(
