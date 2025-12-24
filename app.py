@@ -62,7 +62,7 @@ st.image("logo.png", width=120)
 # ---------------- TITLE ----------------
 st.markdown("<div class='center title'>Thyroid Disorder Detection</div>", unsafe_allow_html=True)
 st.markdown(
-    "<div class='center subtitle'>Upload thyroid ultrasound images to predict Normal or Abnormal condition</div>",
+    "<div class='center subtitle'>Upload thyroid ultrasound image to predict Normal or Abnormal condition</div>",
     unsafe_allow_html=True
 )
 
@@ -118,8 +118,7 @@ st.markdown(
     <hr style="margin-top:40px;">
     <div style="text-align:center; color:#6b7280; font-size:14px;">
         ⚠️ <b>Disclaimer:</b> This system is for <b>decision-support only</b> and should not replace
-        professional medical diagnosis. Please upload <b>thyroid ultrasound images only</b>.
-    </div>
+        professional medical diagnosis. 
     """,
     unsafe_allow_html=True
 )
