@@ -19,6 +19,19 @@ Doctors or users can upload thyroid ultrasound images and receive predictions as
 - **Abnormal**
 
 ---
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/home.png)
+
+### 📤 Uploading Image
+![Uploading Image](screenshots/upload.png)
+
+### 🧪 Normal Thyroid Prediction Result
+![Normal Result](screenshots/normal.png)
+
+### 🚨 Abnormal Thyroid Prediction Result
+![Abnormal Result](screenshots/abnormal.png)
 
 ## 🚀 Features
 
