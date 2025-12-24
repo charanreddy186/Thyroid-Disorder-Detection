@@ -9,71 +9,67 @@ st.set_page_config(
     layout="centered"
 )
 
-# ---------------- THEME TOGGLE ----------------
-dark_mode = st.toggle("🌙 Dark Mode")
-# ---------------- STYLES ----------------
-if dark_mode:
-    st.markdown("""
-    <style>
-    .title { color: #e5e7eb; }
-    .subtitle { color: #cbd5f5; }
-    .card {
-        background-color: #111827;
-        border-radius: 15px;
-        padding: 25px;
-        box-shadow: 0px 4px 12px rgba(0,0,0,0.6);
-    }
-    .normal {
-        background-color: #22c55e;
-        color: black;
-        padding: 15px;
-        border-radius: 10px;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-    }
-    .abnormal {
-        background-color: #ef4444;
-        color: white;
-        padding: 15px;
-        border-radius: 10px;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-    }
-    </style>
-    """, unsafe_allow_html=True)
-else:
-    st.markdown("""
-    <style>
-    .title { color: #1e3a8a; }
-    .subtitle { color: #475569; }
-    .card {
-        background-color: white;
-        border-radius: 15px;
-        padding: 25px;
-        box-shadow: 0px 4px 12px rgba(0,0,0,0.1);
-    }
-    .normal {
-        background-color: #dcfce7;
-        color: #166534;
-        padding: 15px;
-        border-radius: 10px;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-    }
-    .abnormal {
-        background-color: #fee2e2;
-        color: #991b1b;
-        padding: 15px;
-        border-radius: 10px;
-        font-size: 20px;
-        font-weight: 600;
-        text-align: center;
-    }
-    </style>
-    """, unsafe_allow_html=True)
+# ---------------- STYLES (LIGHT MODE ONLY) ----------------
+st.markdown("""
+<style>
+.main {
+    background-color: #f8fafc;
+}
+
+.center {
+    text-align: center;
+}
+
+.title {
+    font-size: 42px;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-top: 10px;
+}
+
+.subtitle {
+    font-size: 18px;
+    color: #475569;
+    margin-bottom: 30px;
+}
+
+.card {
+    background-color: white;
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0px 6px 16px rgba(0,0,0,0.12);
+}
+
+.normal {
+    background-color: #dcfce7;
+    color: #166534;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.abnormal {
+    background-color: #fee2e2;
+    color: #991b1b;
+    padding: 16px;
+    border-radius: 12px;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 14px;
+    color: #64748b;
+    text-align: center;
+}
+</style>
+""", unsafe_allow_html=True)
 
 # ---------------- LOGO ----------------
 st.markdown("<div class='center'>", unsafe_allow_html=True)
@@ -106,6 +102,7 @@ if uploaded_file:
     image = Image.open(uploaded_file)
     st.image(image, caption="Uploaded Ultrasound Image", use_container_width=True)
 
+    # Preprocessing
     img = image.resize((224, 224))
     img_array = np.array(img) / 255.0
     img_array = np.expand_dims(img_array, axis=0)
@@ -114,8 +111,20 @@ if uploaded_file:
         prediction = model.predict(img_array)[0][0]
 
         if prediction > 0.5:
-            st.markdown("<div class='abnormal'>🧠 Abnormal Thyroid Detected</div>", unsafe_allow_html=True)
+            st.markdown(
+                "<div class='abnormal'>🧠 Abnormal Thyroid Detected</div>",
+                unsafe_allow_html=True
+            )
         else:
-            st.markdown("<div class='normal'>✅ Normal Thyroid</div>", unsafe_allow_html=True)
+            st.markdown(
+                "<div class='normal'>✅ Normal Thyroid</div>",
+                unsafe_allow_html=True
+            )
 
 st.markdown("</div>", unsafe_allow_html=True)
+
+# ---------------- FOOTER ----------------
+st.markdown(
+    "<div class='footer'>⚠️ This system is for decision-support only and should not replace medical diagnosis.</div>",
+    unsafe_allow_html=True
+)
